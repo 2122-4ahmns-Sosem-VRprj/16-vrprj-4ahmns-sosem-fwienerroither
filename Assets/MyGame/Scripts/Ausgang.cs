@@ -8,7 +8,7 @@ public class Ausgang : MonoBehaviour
   
     void Update()
     {
-        if (KorbManager.minigameDone)
+        if (EiManager.minigameDone)
         {
             an.SetBool("OpenAusgang", true);
         }

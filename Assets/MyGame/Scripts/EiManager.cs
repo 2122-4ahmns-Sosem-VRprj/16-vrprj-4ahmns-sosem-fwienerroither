@@ -5,13 +5,15 @@ using UnityEngine;
 public class EiManager : MonoBehaviour
 {
     public Material eiMaterial;
+    public Color defaultColor;
     public bool isColored;
     public AudioClip correctSound;
     public AudioClip wrongSound;
+    public static bool minigameDone;
 
     private void Start()
     {
-        eiMaterial.color = Color.white;
+        eiMaterial.color = defaultColor;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +40,8 @@ public class EiManager : MonoBehaviour
         {
             if (isColored)
             {
-            other.gameObject.GetComponent<AudioSource>().clip = correctSound;
+                other.gameObject.GetComponent<AudioSource>().clip = correctSound;
+                minigameDone = true;
             }
             else
             {
