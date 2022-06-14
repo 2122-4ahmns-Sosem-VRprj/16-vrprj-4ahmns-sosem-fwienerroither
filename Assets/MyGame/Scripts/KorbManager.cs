@@ -1,30 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class KorbManager : MonoBehaviour
 {
-    public GameObject korbParent;
     public List<string> farben = new List<string>();
     public List<Color> _targetFarben = new List<Color>();
     List<string> targetFarben = new List<string>();
     public List<GameObject> eier = new List<GameObject>();
+    public Text infotext;
+    public Ausgang ausgang;
+    public GameObject resetter;
+    public GameObject sceneChangeTrigger;
+    public GameObject eierPrefab;
+    public GameObject eierPrefabInstance;
+    public Transform eierPrefabParent;
+    public GameObject korbParent;
 
     private void Start()
     {
         // Es können keine Farben vergleichen werden, sondern lediglich der String vom Farbcode
 
         _targetFarben.ForEach((i)=> { targetFarben.Add(i.ToString()); });
-    }
 
-    private void Update()
-    {
-        // Erst wenn der Spieler den Tisch mit den Anweisungen gefunden hat, soll der Korb sichtbar werden
+        // Spwan Eier
 
-        if (SceneManager.playerHasReachedTable)
-        {
-            korbParent.SetActive(true);
-        }
+        eierPrefabInstance = Instantiate(eierPrefab, eierPrefabParent);
     }
 
     private void OnTriggerStay(Collider other)
@@ -40,6 +42,7 @@ public class KorbManager : MonoBehaviour
             // Ei soll nicht mehr bewegt werden können, sobald es im Korb liegt
 
             other.GetComponent<XRGrabInteractable>().enabled = false;
+            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
             // Ei zur Liste aller Eier im Korb hinzufügen
 
@@ -60,20 +63,32 @@ public class KorbManager : MonoBehaviour
             if (CompareLists(farben, targetFarben))
             {
                 // Wenn die Farben stimmen, soll ein entsprechender Text angezeigt werden, soll sich der Ausgang öffnen und ein Sound abgespielt werden
+
+                infotext.text = "Gut gemacht! Jett musst du nur noch den Ausgang finden, dann bist du frei!";
+
+                ausgang.OpenAusgang();
+                sceneChangeTrigger.SetActive(true);
             }
             else
             {
-               // Wenn die Farben nicht stimmen, soll ein entsprechender Text angezeigt werden, sollen die Eier despawnen und ein Sound abgespielt werden
+               // Wenn die Farben nicht stimmen, soll ein entsprechender Text angezeigt werden, sollen die Eier respawnen und ein Sound abgespielt werden
 
                 foreach (GameObject i in eier)
                 {
                     Destroy(i);
                 }
 
+                Destroy(eierPrefabInstance);
+                eierPrefabInstance = Instantiate(eierPrefab, eierPrefabParent);
+
+                infotext.text = "Das waren die falschen Eier. Geh zurück und probiere es nochmal!";
+                resetter.SetActive(true);
+
                 // Listen für einen neuen Versuch leeren
 
                 eier.Clear();
                 farben.Clear();
+
             }
         }
     }

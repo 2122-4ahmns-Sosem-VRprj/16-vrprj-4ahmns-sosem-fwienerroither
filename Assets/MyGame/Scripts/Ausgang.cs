@@ -3,12 +3,9 @@ using UnityEngine;
 public class Ausgang : MonoBehaviour
 {
     public Animator animator;
-  
-    void Update()
+
+    public void OpenAusgang()
     {
-        if (EiManager.minigameDone)
-        {
             animator.SetBool("OpenAusgang", true);
-        }
     }
 }
