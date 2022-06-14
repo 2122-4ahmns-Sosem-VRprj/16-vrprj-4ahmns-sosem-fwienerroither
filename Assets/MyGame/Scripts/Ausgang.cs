@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ausgang : MonoBehaviour
 {
-    public Animator an;
+    public Animator animator;
   
     void Update()
     {
         if (EiManager.minigameDone)
         {
-            an.SetBool("OpenAusgang", true);
+            animator.SetBool("OpenAusgang", true);
         }
     }
 }

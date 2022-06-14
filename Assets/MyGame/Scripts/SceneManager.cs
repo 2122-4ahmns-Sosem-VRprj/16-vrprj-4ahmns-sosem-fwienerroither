@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public bool playerHasReachedTable;
+    public static bool playerHasReachedTable;
 }

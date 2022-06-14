@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Eingang : MonoBehaviour
 {
-    public Animator an;
+    public Animator animtor;
+
     private void OnTriggerEnter(Collider other)
     {
+        // Sobald der Spieler das Maze betreten hat, gibt es kein Zurück mehr
+
         if (other.CompareTag("Player"))
         {
-            an.SetBool("CloseEingang", true);
+            animtor.SetBool("CloseEingang", true);
         }
     }
 }

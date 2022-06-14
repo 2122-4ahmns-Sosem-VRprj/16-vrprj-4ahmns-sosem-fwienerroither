@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EiManager : MonoBehaviour
@@ -14,23 +12,24 @@ public class EiManager : MonoBehaviour
 
     private void Start()
     {
-        eiMaterial.color = defaultColor;
+        GetComponent<Renderer>().material.color = defaultColor;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Color"))
         {
-            switch (other.gameObject.GetComponent<Farbe>().farbe.ToString())
+            switch (other.gameObject.GetComponent<Renderer>().material.color)
             {
-                case "Rot":
-                    eiMaterial.color = Color.red;
+                case var value when value == Color.red:
+                    GetComponent<Renderer>().material.color = Color.red;
                     break;
-                case "Blau":
-                    eiMaterial.color = Color.blue;
+
+                case var value when value == Color.blue:
+                    GetComponent<Renderer>().material.color = Color.blue;
                     break;
-                case "Gruen":
-                    eiMaterial.color = Color.green;
+                case var value when value == Color.green:
+                    GetComponent<Renderer>().material.color = Color.green;
                     break;
             }
 
