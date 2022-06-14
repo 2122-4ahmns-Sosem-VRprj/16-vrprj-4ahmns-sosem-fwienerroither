@@ -11,22 +11,30 @@ public class KorbManager : MonoBehaviour
     public List<GameObject> eier = new List<GameObject>();
     public Text infotext;
     public Ausgang ausgang;
-    public GameObject resetter;
-    public GameObject sceneChangeTrigger;
+    public GameObject resetter; 
+    public Collider sceneChangeTrigger;
     public GameObject eierPrefab;
     public GameObject eierPrefabInstance;
     public Transform eierPrefabParent;
-    public GameObject korbParent;
+    public Text text;
 
     private void Start()
     {
-        // Es können keine Farben vergleichen werden, sondern lediglich der String vom Farbcode
+        // Es können keine Farben vergleichen werden, sondern lediglich der String vom Farbcode 
 
         _targetFarben.ForEach((i)=> { targetFarben.Add(i.ToString()); });
 
         // Spwan Eier
 
         eierPrefabInstance = Instantiate(eierPrefab, eierPrefabParent);
+    }
+
+    void Update()
+    {
+        // Temporär für Debugging
+
+        text.text = "";
+        farben.ForEach((i) => { text.text += (", " + i); });
     }
 
     private void OnTriggerStay(Collider other)
@@ -42,7 +50,7 @@ public class KorbManager : MonoBehaviour
             // Ei soll nicht mehr bewegt werden können, sobald es im Korb liegt
 
             other.GetComponent<XRGrabInteractable>().enabled = false;
-            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
 
             // Ei zur Liste aller Eier im Korb hinzufügen
 
@@ -67,7 +75,7 @@ public class KorbManager : MonoBehaviour
                 infotext.text = "Gut gemacht! Jett musst du nur noch den Ausgang finden, dann bist du frei!";
 
                 ausgang.OpenAusgang();
-                sceneChangeTrigger.SetActive(true);
+                sceneChangeTrigger.enabled = true;
             }
             else
             {

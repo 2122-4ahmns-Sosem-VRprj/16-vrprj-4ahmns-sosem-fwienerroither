@@ -1,5 +1,5 @@
 using UnityEngine;
-
+ 
 public class Ausgang : MonoBehaviour
 {
     public Animator animator;

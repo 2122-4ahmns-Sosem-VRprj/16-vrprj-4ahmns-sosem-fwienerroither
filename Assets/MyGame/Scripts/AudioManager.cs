@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public AudioSource ambience;
-    public AudioSource kuekenIdle;
+    public AudioSource kuekenIdle; 
     public AudioSource correctSound;
     public AudioSource wrongSound;
 

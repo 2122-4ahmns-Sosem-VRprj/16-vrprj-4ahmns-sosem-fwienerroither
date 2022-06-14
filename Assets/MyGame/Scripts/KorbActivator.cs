@@ -6,7 +6,7 @@ public class KorbActivator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")) 
         {
             // Korb soll erst gefunden werden können, wenn die Farben entdeckt wurden
 

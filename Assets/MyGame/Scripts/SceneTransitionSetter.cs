@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+public class SceneTransitionSetter : MonoBehaviour
 {
     public Animator animator;
 
@@ -11,10 +10,5 @@ public class SceneTransition : MonoBehaviour
         {
             animator.SetTrigger("TransitionScene");
         }
-    }
-
-    public void TransitionScene()
-    {
-        SceneManager.LoadScene("MainScene");
     }
 }

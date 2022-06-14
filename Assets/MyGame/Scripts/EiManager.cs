@@ -6,7 +6,7 @@ public class EiManager : MonoBehaviour
     public Color defaultColor;
     public AudioClip correctSound;
     public AudioClip wrongSound;
-
+     
     private void Start()
     {
         GetComponent<Renderer>().material.color = defaultColor;

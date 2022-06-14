@@ -9,7 +9,7 @@ public class Farbe : MonoBehaviour
         Rot,
         Blau,
         Gruen
-    };
+    }; 
 
     public MyEnum farbe;
 
