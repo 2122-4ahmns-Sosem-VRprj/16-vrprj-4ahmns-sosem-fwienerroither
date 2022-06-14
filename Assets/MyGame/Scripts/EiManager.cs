@@ -10,6 +10,7 @@ public class EiManager : MonoBehaviour
     public AudioClip correctSound;
     public AudioClip wrongSound;
     public static bool minigameDone;
+    public static bool reachedMinigame;
 
     private void Start()
     {
@@ -40,15 +41,13 @@ public class EiManager : MonoBehaviour
         {
             if (isColored)
             {
-                other.gameObject.GetComponent<AudioSource>().clip = correctSound;
+                AudioManager.instance.PlaySound(AudioManager.instance.correctSound);
                 minigameDone = true;
             }
             else
             {
-                other.gameObject.GetComponent<AudioSource>().clip = wrongSound;
+                AudioManager.instance.PlaySound(AudioManager.instance.wrongSound);
             }
-
-            other.gameObject.GetComponent<AudioSource>().Play();
         }
     }
 }

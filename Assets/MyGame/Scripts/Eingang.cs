@@ -9,7 +9,6 @@ public class Eingang : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("aja");
             an.SetBool("CloseEingang", true);
         }
     }

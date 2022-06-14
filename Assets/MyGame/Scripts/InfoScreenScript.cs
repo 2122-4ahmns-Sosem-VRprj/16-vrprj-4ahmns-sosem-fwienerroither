@@ -10,7 +10,7 @@ public class InfoScreenScript : MonoBehaviour
     {
         if (EiManager.minigameDone)
         {
-            text.text = "Gut gemacht, du hast das Ei in der richtigen Farbe gefärbt und hier her gebracht. Die Tür zum Ausgang des Labyrinths steht nun offen. Du bist wieder frei!";
+            text.text = "Gut gemacht, du hast das Ei in der richtigen Farbe gef?rbt und hier her gebracht. Die T?r zum Ausgang des Labyrinths steht nun offen. Du bist wieder frei!";
         }
     }
 }
