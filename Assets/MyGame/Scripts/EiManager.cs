@@ -4,16 +4,18 @@ public class EiManager : MonoBehaviour
 {
     public Material eiMaterial;
     public Color defaultColor;
-    public AudioClip correctSound;
-    public AudioClip wrongSound;
      
     private void Start()
     {
+        // Am Anfang wird dem Renderer die Default Farbe zugewiesen
+
         GetComponent<Renderer>().material.color = defaultColor;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // Wenn das Ei mit einem Farbeimer kollidiert (Color Tag) soll das Ei die Farbe des Eimers annehmen
+
         if (other.gameObject.CompareTag("Color"))
         {
             switch (other.gameObject.GetComponent<Renderer>().material.color)

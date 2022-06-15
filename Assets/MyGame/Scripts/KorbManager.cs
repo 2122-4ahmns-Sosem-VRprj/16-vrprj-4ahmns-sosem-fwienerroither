@@ -9,6 +9,7 @@ public class KorbManager : MonoBehaviour
     public List<Color> _targetFarben = new List<Color>();
     List<string> targetFarben = new List<string>();
     public List<GameObject> eier = new List<GameObject>();
+
     public Text infotext;
     public Ausgang ausgang;
     public GameObject resetter; 
