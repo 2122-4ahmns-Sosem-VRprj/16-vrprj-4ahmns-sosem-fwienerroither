@@ -17,6 +17,7 @@ public class KorbManager : MonoBehaviour
     public GameObject eierPrefabInstance;
     public Transform eierPrefabParent;
     public Text text;
+    public bool soundHasPlayed;
 
     private void Start()
     {
@@ -72,10 +73,16 @@ public class KorbManager : MonoBehaviour
             {
                 // Wenn die Farben stimmen, soll ein entsprechender Text angezeigt werden, soll sich der Ausgang öffnen und ein Sound abgespielt werden
 
-                infotext.text = "Gut gemacht! Jett musst du nur noch den Ausgang finden, dann bist du frei!";
+                infotext.text = "Gut gemacht! Jetzt musst du nur noch den Ausgang finden, dann bist du frei!";
 
                 ausgang.OpenAusgang();
                 sceneChangeTrigger.enabled = true;
+
+                // Sound soll nur in einen Frame abspielen
+
+                if (soundHasPlayed) return;
+                AudioManager.instance.PlaySound(AudioManager.instance.correctSound);
+                soundHasPlayed = true;
             }
             else
             {
@@ -97,6 +104,11 @@ public class KorbManager : MonoBehaviour
                 eier.Clear();
                 farben.Clear();
 
+                // Sound soll nur in einen Frame abspielen
+
+                if (soundHasPlayed) return;
+                AudioManager.instance.PlaySound(AudioManager.instance.wrongSound);
+                soundHasPlayed = true;
             }
         }
     }

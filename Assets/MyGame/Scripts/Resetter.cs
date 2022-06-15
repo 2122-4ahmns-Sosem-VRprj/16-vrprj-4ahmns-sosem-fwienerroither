@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Resetter : MonoBehaviour
 {
     public Text infotext;
+    public KorbManager korbManager;
 
     // Wenn der Spieler zurück zu den Eiern geht, um einen neuen Versuch zu starten, soll der Infotext zurückgesetzt werden
 
@@ -15,5 +16,9 @@ public class Resetter : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+
+        // Sound bool zurücksetzten
+
+        korbManager.soundHasPlayed = false;
     }
 }
