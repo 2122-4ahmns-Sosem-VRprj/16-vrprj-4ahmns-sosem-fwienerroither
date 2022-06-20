@@ -2,7 +2,7 @@
 <div align="center">Documentation of my VR Game</div>
 <div align="center">2021/2022</div>
 <div align="center">16 - Fabio Wienerroither</div>
-<div align="center">16 - Template by Tim Toller</div>
+<div align="center">Template by Tim Toller</div>
 
 
 ### Gründe das Spiel zu spielen / Story
